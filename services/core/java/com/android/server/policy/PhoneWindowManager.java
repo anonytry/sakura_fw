@@ -857,6 +857,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     private boolean mLongSwipeDown;
     private CameraAvailbilityListener mCameraAvailabilityListener;
+    private ScreenshotHelper mScreenshotHelper;
 
     private ScreenshotHelper mScreenshotHelper;
 
@@ -2433,9 +2434,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             case TORCH:
                 toggleTorch();
                 break;
-            case SCREENSHOT:
-                mScreenshotHelper.takeScreenshot(SCREENSHOT_KEY_OTHER, mHandler, null);
-                break;
             case VOLUME_PANEL:
                 toggleVolumePanel();
                 break;
@@ -2450,6 +2448,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 break;
             case RINGER_MODES:
                 toggleRingerModes();
+		break;
+            case SCREENSHOT:
+                takeScreenshot(SCREENSHOT_KEY_OTHER);
+                notifyKeyGestureCompleted(event, KeyGestureEvent.KEY_GESTURE_TYPE_TAKE_SCREENSHOT);
                 break;
             default:
                 break;
@@ -8273,5 +8275,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             } catch (RemoteException e) {
             }
         }
+
+    private void takeScreenshot(int source) {
+        mScreenshotHelper.takeScreenshot(source, mHandler, null);
     }
 }
