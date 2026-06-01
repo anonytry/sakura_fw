@@ -6845,6 +6845,12 @@ public final class Settings {
         public static final String CUSTOM_RINGTONE_VIBRATION_PATTERN = "custom_ringtone_vibration_pattern";
 
         /**
+         * Gesture navbar auto-hide mode.
+         * @hide
+         */
+        public static final String GESTURE_NAVBAR_AUTO_HIDE = "gesture_navbar_auto_hide";
+
+        /**
          * Whether to show seconds next to clock in status bar
          * 0 - hide (default)
          * 1 - show
@@ -21522,11 +21528,24 @@ public final class Settings {
          */
         public static final String RESTRICTED_NETWORKING_MODE = "restricted_networking_mode";
 
+	/**
+         * Control whether FLAG_SECURE is ignored for all windows.
+         * @hide
+         */
+        @Readable
+        public static final String WINDOW_IGNORE_SECURE = "window_ignore_secure";
+
         /**
          * Control whether application downgrade is allowed.
          * @hide
          */
         public static final String PM_DOWNGRADE_ALLOWED = "pm_downgrade_allowed";
+
+	/**	
+	 * Control whether to hide screen capture status from apps.
+         * @hide
+         */
+        public static final String HIDE_SCREEN_CAPTURE_STATUS = "hide_screen_capture_status";
 
         /**
          * Setting indicating whether Low Power Standby is enabled, if supported.
